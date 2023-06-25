@@ -47,6 +47,7 @@ void display(void)
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
     gluLookAt(0.0f, 30.0f, 50.0f, 0.0f, 20.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+    GLUquadricObj *quadObj = gluNewQuadric();
 
     // Ground
     glPushMatrix();
@@ -58,7 +59,7 @@ void display(void)
 
     // Patrick's house
     glPushMatrix();
-        glColor3f(0.218431373f, 0.124509804, 0.051960784f);
+        glColor3f(0.218431373f, 0.124509804f, 0.051960784f);
         glTranslatef(-50.0, 0.0, 0.0);
         drawEllipsoid(50, 50, 30, 36, 12);
     glPopMatrix();
@@ -107,6 +108,126 @@ void display(void)
             else
                 height_change -= 3;
         }
+    glPopMatrix();
+
+    // Spongebob
+    glPushMatrix();
+
+        // At the front of his house looking left
+        glTranslatef(40.0, 0.0, 50.0);
+        glRotatef(-45, 0, 1, 0);
+
+        // Pants (brown and white)
+        glColor3f(0.428431373f, 0.244509804f, 0.101960784f);
+        glScalef(20, 5.0, 5.0);
+        glutSolidCube(1);
+        glColor3f(1.0f, 1.0f, 1.0f);
+        glTranslatef(0.0, 0.5, 0.0);
+        glutSolidCube(1);
+
+        // Red tie
+        glPushMatrix();
+            glColor3f(1.0f, 0.0f, 0.0f);
+            glScalef(0.2, 0.7, 1.0);
+            glutSolidCube(1);
+        glPopMatrix();
+
+        // Body
+        glColor3f(1.0f, 1.0f, 0.0f);
+        glTranslatef(0.0, 2.0, 0.0);
+        glScalef(1.0, 3.5, 1.0);
+        glutSolidCube(1);
+
+        // Reseting scale
+        glScalef(0.05, 0.057142857, 0.2);
+
+        // Mouth
+        glPushMatrix();
+            glColor3f(1.0f, 0.0f, 0.0f);
+            glTranslatef(0.0, -3.0, 3.0);
+            glRotatef(180, 0, 1, 0);
+            glutSolidCone(3.7, 5.0, 20.0, 20.0);
+        glPopMatrix();
+
+        // Left teeth
+        glPushMatrix();
+            glColor3f(1.0f, 1.0f, 1.0f);
+            glTranslatef(-1.5, -2.0, 3.0);
+            glScalef(2.0, 2.0, 1.0);
+            glutSolidCube(1);
+        glPopMatrix();
+
+        // Right teeth
+        glPushMatrix();
+            glColor3f(1.0f, 1.0f, 1.0f);
+            glTranslatef(2.0, -2.0, 3.0);
+            glScalef(2.0, 2.0, 1.0);
+            glutSolidCube(1);
+        glPopMatrix();
+
+        glPushMatrix();
+            // Right shirt sleeve
+            glColor3f(1.0f, 1.0f, 1.0f);
+            glTranslatef(10.0, 0.0, 0.0);
+            glScalef(4.0, 2.0, 2.0);
+            glutSolidCube(1);
+
+            // Right arm
+            glColor3f(1.00f, 1.00f, 0.00f);
+            glScalef(0.25, 0.5, 0.5);
+            glRotatef(90, 0, 1, 0);
+            glRotatef(-45, 1, 0, 0);
+            gluCylinder(quadObj, 0.7, 0.7, 13, 50, 50);
+
+            // Right leg
+            glTranslatef(25.0, 10.0, -4.0);
+            gluCylinder(quadObj, 0.7, 0.7, 10, 50, 50);
+            glScalef(4.0, 2.0, 2.0);
+            glColor3f(0.0f, 0.0f, 0.0f);
+            glutSolidCube(1);
+        glPopMatrix();
+
+        glPushMatrix();
+            // Left shirt sleeve
+            glColor3f(1.0f, 1.0f, 1.0f);
+            glTranslatef(-10.0, 0.0, 0.0);
+            glScalef(4.0, 2.0, 2.0);
+            glutSolidCube(1);
+
+            // Left arm
+            glColor3f(1.00f, 1.00f, 0.00f);
+            glScalef(0.25, 0.5, 0.5);
+            glRotatef(90, 0, 1, 0);
+            glRotatef(-135, 1, 0, 0);
+            gluCylinder(quadObj, 0.7, 0.7, 15, 50, 50);
+
+            // Left leg
+            glTranslatef(-25.0, -10.0, 4.0);
+            gluCylinder(quadObj, 0.7, 0.7, 10, 50, 50);
+            glScalef(4.0, 2.0, 2.0);
+            glColor3f(0.0f, 0.0f, 0.0f);
+            glutSolidCube(1);
+        glPopMatrix();
+
+        // Left eyeball and pupil
+        glPushMatrix();
+            glColor3f(1.0f, 1.0f, 1.0f);
+            glTranslatef(-2.0, 4.0, 3.0);
+            glutSolidSphere(2.5, 20.0, 20.0);
+            glColor3f(0.0f, 0.0f, 1.0f);
+            glTranslatef(0.0, 0.0, 2.5);
+            glutSolidSphere(0.7, 10.0, 10.0);
+        glPopMatrix();
+
+        // Right eyeball and pupil
+        glPushMatrix();
+            glColor3f(1.0f, 1.0f, 1.0f);
+            glTranslatef(3.0, 4.0, 3.0);
+            glutSolidSphere(2.5, 20.0, 20.0);
+            glColor3f(0.0f, 0.0f, 1.0f);
+            glTranslatef(0.0, 0.0, 2.5);
+            glutSolidSphere(0.7, 10.0, 10.0);
+        glPopMatrix();
     glPopMatrix();
 
     glFlush();
