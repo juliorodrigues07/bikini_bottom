@@ -233,7 +233,7 @@ void display(void)
     // Patrick
     glPushMatrix();
 
-        // At the front of his house looking right
+        // At the front of his house
         glTranslatef(-40.0, 0.0, 50.0);
         glRotatef(45, 0, 1, 0);
 
@@ -287,6 +287,30 @@ void display(void)
             glRotatef(115, 1, 0, 0);
             glRotatef(-15, 0, 0, 1);
             drawEllipsoid(50, 50, 5, 30, 6);
+        glPopMatrix();
+    glPopMatrix();
+
+    // Gary
+    glPushMatrix();
+        // In the middle of the houses
+        glColor3f(0.945098039f, 0.533333333f, 0.431372549f);
+        glTranslatef(0.0, 2.0, 0.0);
+        glRotatef(-45, 0, 1, 0);
+        drawEllipsoid(50, 50, 7, 7, 6);
+
+        // Eyes
+        glPushMatrix();
+            glColor3f(0.349019608f, 0.721568627f, 0.862745098f);
+            glTranslatef(-8.0, 0.0, 0.0);
+            glRotatef(-90, 1, 0, 0);
+            gluCylinder(quadObj, 0.5, 0.5, 8, 50, 50);
+            glTranslatef(0.0, 0.0, 8.0);
+            glutSolidSphere(1.5, 10.0, 10.0);
+
+            glTranslatef(4.0, 0.0, -7.0);
+            gluCylinder(quadObj, 0.5, 0.5, 9, 50, 50);
+            glTranslatef(0.0, 0.0, 8.0);
+            glutSolidSphere(1.5, 10.0, 10.0);
         glPopMatrix();
     glPopMatrix();
 
