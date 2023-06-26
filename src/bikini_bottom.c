@@ -230,6 +230,66 @@ void display(void)
         glPopMatrix();
     glPopMatrix();
 
+    // Patrick
+    glPushMatrix();
+
+        // At the front of his house looking right
+        glTranslatef(-40.0, 0.0, 50.0);
+        glRotatef(45, 0, 1, 0);
+
+        // Belly
+        glPushMatrix();
+            glColor3f(1.0f, 0.541176471f, 0.443137255f);
+            glTranslatef(0.0, 20.0, 0.0);
+            glutSolidSphere(12.0, 20.0, 20.0);
+        glPopMatrix();
+
+        // Face
+        glPushMatrix();
+            glTranslatef(0.0, 28.0, 0.0);
+            drawEllipsoid(50, 50, 5, 20, 6);
+
+            // Teeth
+            glColor3f(1.0f, 1.0f, 1.0f);
+            glTranslatef(-2.0, 6.0, 5.0);
+            glScalef(2.0, 2.0, 1.0);
+            glutSolidCube(1);
+        glPopMatrix();
+
+        // Left eyeball and pupil
+        glPushMatrix();
+            glColor3f(1.0f, 1.0f, 1.0f);
+            glTranslatef(-4.0, 38.0, 2.0);
+            glutSolidSphere(2.0, 20.0, 20.0);
+
+            glColor3f(0.0f, 0.0f, 0.0f);
+            glTranslatef(0.0, 0.0, 2.0);
+            glutSolidSphere(1.0, 10.0, 10.0);
+        glPopMatrix();
+
+        // Right eyeball and pupil
+        glPushMatrix();
+            glColor3f(1.0f, 1.0f, 1.0f);
+            glTranslatef(0.0, 38.0, 5.0);
+            glutSolidSphere(2.0, 20.0, 20.0);
+
+            glColor3f(0.0f, 0.0f, 0.0f);
+            glTranslatef(-2.0, 0.0, 2.0);
+            glutSolidSphere(1.0, 10.0, 10.0);
+        glPopMatrix();
+
+        // Legs and arms
+        glPushMatrix();
+            glColor3f(1.0f, 0.541176471f, 0.443137255f);
+            glTranslatef(0.0, 20.0, 0.0);
+            glRotatef(-60, 1, 0, 0);
+            drawEllipsoid(50, 50, 5, 30, 6);
+            glRotatef(115, 1, 0, 0);
+            glRotatef(-15, 0, 0, 1);
+            drawEllipsoid(50, 50, 5, 30, 6);
+        glPopMatrix();
+    glPopMatrix();
+
     glFlush();
     glutPostRedisplay();
 }
