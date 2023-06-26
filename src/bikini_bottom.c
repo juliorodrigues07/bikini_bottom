@@ -62,6 +62,14 @@ void display(void)
         glColor3f(0.218431373f, 0.124509804f, 0.051960784f);
         glTranslatef(-50.0, 0.0, 0.0);
         drawEllipsoid(50, 50, 30, 36, 12);
+
+        glColor3f(0.917647059f, 0.901960784f, 0.470588235f);
+        glTranslatef(0.0, 38.0, 0.0);
+        glScalef(1.0, 5.0, 5.0);
+        glutSolidCube(1.0);
+        glTranslatef(0.0, 0.5, 0.0);
+        glScalef(12.0, 0.2, 1.0);
+        glutSolidCube(1.0);
     glPopMatrix();
 
     // SpongeBob's house
@@ -311,6 +319,29 @@ void display(void)
             gluCylinder(quadObj, 0.5, 0.5, 9, 50, 50);
             glTranslatef(0.0, 0.0, 8.0);
             glutSolidSphere(1.5, 10.0, 10.0);
+        glPopMatrix();
+    glPopMatrix();
+
+    glPushMatrix();
+        // In the middle of the houses, above Gary
+        glColor3f(0.858823529f, 0.580392157f, 0.894117647f);
+        glTranslatef(0.0, 40.0, 0.0);
+        drawEllipsoid(50, 50, 8, 6, 6);
+
+        // Tentacles
+        glPushMatrix();
+            glRotatef(90, 1, 0, 0);
+
+            glTranslatef(-6.0, -4.0, 0.0);
+            gluCylinder(quadObj, 0.5, 0.5, 10, 50, 50);
+            glTranslatef(3.0, 0.0, 0.0);
+            gluCylinder(quadObj, 0.5, 0.5, 10, 50, 50);
+            glTranslatef(3.0, 0.0, 0.0);
+            gluCylinder(quadObj, 0.5, 0.5, 10, 50, 50);
+            glTranslatef(3.0, 0.0, 0.0);
+            gluCylinder(quadObj, 0.5, 0.5, 10, 50, 50);
+            glTranslatef(3.0, 0.0, 0.0);
+            gluCylinder(quadObj, 0.5, 0.5, 10, 50, 50);
         glPopMatrix();
     glPopMatrix();
 
